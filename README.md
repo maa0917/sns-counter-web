@@ -1,73 +1,126 @@
-# React + TypeScript + Vite
+# SNS Counter Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React TypeScript web application for tracking social media follower counts, designed to work with microcontroller gadgets and a Go HTTP API backend.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 📱 Real-time Instagram follower count display
+- 🎨 Modern UI with shadcn/ui components
+- 🌙 Dark/light theme support with CSS variables
+- 📊 Number formatting for better readability
+- 🔄 Manual refresh functionality
+- 🎯 Responsive design optimized for various devices
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React 19** with TypeScript
+- **Vite 7** for fast development and building
+- **Tailwind CSS 3.4** for styling
+- **shadcn/ui** for component library
+- **Biome** for code formatting and linting
+- **pnpm** as package manager
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js 18+ 
+- pnpm (recommended package manager)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   pnpm install
+   ```
+
+3. Start the development server:
+   ```bash
+   pnpm dev
+   ```
+
+4. Open [http://localhost:5173](http://localhost:5173) in your browser
+
+## Development Commands
+
+```bash
+# Start development server
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Preview production build
+pnpm preview
+
+# Code quality
+pnpm check           # Format + lint + organize imports
+pnpm lint           # Lint only
+pnpm lint:fix       # Lint with auto-fix
+pnpm format         # Format only
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Project Structure
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+src/
+├── components/          # Custom React components
+│   ├── ui/             # shadcn/ui components
+│   └── InstagramCounter.tsx
+├── lib/                # Utility functions
+├── hooks/              # Custom React hooks
+├── types/              # TypeScript type definitions
+├── utils/              # Helper utilities
+└── App.tsx             # Main application component
+```
+
+## API Integration
+
+This frontend is designed to work with a Go HTTP API backend that provides:
+
+- Bearer token authentication
+- Instagram follower count endpoints
+- Optimized responses for microcontroller devices
+
+### Authentication
+
+API requests use bearer tokens with the format:
+```
+Authorization: Bearer sk_live_{tenant_id}_{secret}
+```
+
+## Adding New Components
+
+This project uses shadcn/ui. To add new components:
+
+```bash
+# Add a new shadcn/ui component
+pnpm dlx shadcn@latest add [component-name]
+
+# Example: Add a dialog component
+pnpm dlx shadcn@latest add dialog
+```
+
+## Styling
+
+The project uses Tailwind CSS with CSS variables for theming:
+- Neutral color palette by default
+- CSS variables for easy theme customization
+- Responsive design with mobile-first approach
+
+## Contributing
+
+1. Follow the existing code style (enforced by Biome)
+2. Use TypeScript for type safety
+3. Test components thoroughly
+4. Update documentation as needed
+
+## Future Plans
+
+- [ ] Real API integration with Go backend
+- [ ] Additional social platforms (Twitter, YouTube)
+- [ ] Auto-refresh functionality
+- [ ] Data visualization charts
+- [ ] User authentication
+- [ ] Custom themes
