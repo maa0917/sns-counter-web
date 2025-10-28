@@ -4,7 +4,7 @@ A React TypeScript web application for tracking social media follower counts, de
 
 ## Features
 
-- 📱 Real-time Instagram follower count display
+- 📱 Real-time social media follower count display (Instagram, Twitter, YouTube)
 - 🎨 Modern UI with shadcn/ui components
 - 🌙 Dark/light theme support with CSS variables
 - 📊 Number formatting for better readability
@@ -67,7 +67,7 @@ pnpm format         # Format only
 src/
 ├── components/          # Custom React components
 │   ├── ui/             # shadcn/ui components
-│   └── InstagramCounter.tsx
+│   └── FollowerCounter.tsx
 ├── lib/                # Utility functions
 ├── hooks/              # Custom React hooks
 ├── types/              # TypeScript type definitions
@@ -80,7 +80,8 @@ src/
 This frontend is designed to work with a Go HTTP API backend that provides:
 
 - Bearer token authentication
-- Instagram follower count endpoints
+- Social media follower count endpoints
+- Platform selection managed via Firestore per device
 - Optimized responses for microcontroller devices
 
 ### Authentication
@@ -119,7 +120,7 @@ The project uses Tailwind CSS with CSS variables for theming:
 ## Future Plans
 
 - [ ] Real API integration with Go backend
-- [ ] Additional social platforms (Twitter, YouTube)
+- [x] Multiple social platforms support (Instagram, Twitter, YouTube)
 - [ ] Auto-refresh functionality
 - [ ] Data visualization charts
 - [ ] User authentication

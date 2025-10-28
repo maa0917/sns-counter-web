@@ -1,4 +1,4 @@
-import { InstagramCounter } from "@/components/InstagramCounter";
+import { FollowerCounter } from "@/components/FollowerCounter";
 
 function App() {
 	return (
@@ -8,7 +8,7 @@ function App() {
 			</header>
 			<main className="flex-1 p-6 max-w-4xl mx-auto w-full">
 				<div className="flex justify-center">
-					<InstagramCounter />
+					<FollowerCounter />
 				</div>
 			</main>
 		</div>
