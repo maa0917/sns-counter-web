@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { getFollowerCount, ApiError } from "@/api/followerCount";
 
 interface UseFollowerCountReturn {
@@ -13,7 +13,7 @@ export function useFollowerCount(): UseFollowerCountReturn {
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 
-	const refresh = useCallback(async () => {
+	const refresh = async () => {
 		setLoading(true);
 		setError(null);
 
@@ -29,7 +29,7 @@ export function useFollowerCount(): UseFollowerCountReturn {
 		} finally {
 			setLoading(false);
 		}
-	}, []);
+	};
 
 	return {
 		followerCount,
