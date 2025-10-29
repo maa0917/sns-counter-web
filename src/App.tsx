@@ -1,25 +1,7 @@
 import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router";
-import { FollowerCounter } from "@/components/FollowerCounter";
+import { HomePage } from "@/pages/HomePage";
+import { SettingsPage } from "@/pages/SettingsPage";
 import { Button } from "@/components/ui/button";
-
-function HomePage() {
-	return (
-		<div className="flex justify-center">
-			<FollowerCounter />
-		</div>
-	);
-}
-
-function SettingsPage() {
-	return (
-		<div className="flex justify-center">
-			<div className="w-full max-w-4xl">
-				<h2 className="text-2xl font-bold mb-6">ユーザー管理</h2>
-				<p>管理画面の内容をここに実装予定</p>
-			</div>
-		</div>
-	);
-}
 
 function Navigation() {
 	const location = useLocation();
