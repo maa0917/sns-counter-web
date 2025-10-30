@@ -1,17 +1,23 @@
-import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router";
+import { BrowserRouter, Link, Route, Routes, useLocation } from "react-router";
+import { Button } from "@/components/ui/button";
 import { HomePage } from "@/pages/HomePage";
 import { SettingsPage } from "@/pages/SettingsPage";
-import { Button } from "@/components/ui/button";
 
 function Navigation() {
 	const location = useLocation();
-	
+
 	return (
 		<nav className="flex gap-2">
-			<Button asChild variant={location.pathname === "/" ? "default" : "outline"}>
+			<Button
+				asChild
+				variant={location.pathname === "/" ? "default" : "outline"}
+			>
 				<Link to="/">ホーム</Link>
 			</Button>
-			<Button asChild variant={location.pathname === "/settings" ? "default" : "outline"}>
+			<Button
+				asChild
+				variant={location.pathname === "/settings" ? "default" : "outline"}
+			>
 				<Link to="/settings">設定</Link>
 			</Button>
 		</nav>

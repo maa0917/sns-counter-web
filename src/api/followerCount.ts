@@ -47,9 +47,7 @@ export async function getFollowerCount(): Promise<number> {
 		}
 
 		if (error instanceof TypeError && error.message.includes("fetch")) {
-			throw new ApiError(
-				"ネットワークエラー: APIサーバーに接続できません",
-			);
+			throw new ApiError("ネットワークエラー: APIサーバーに接続できません");
 		}
 
 		throw new ApiError("予期しないエラーが発生しました");

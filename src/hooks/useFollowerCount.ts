@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getFollowerCount, ApiError } from "@/api/followerCount";
+import { ApiError, getFollowerCount } from "@/api/followerCount";
 
 interface UseFollowerCountReturn {
 	followerCount: number | null;
