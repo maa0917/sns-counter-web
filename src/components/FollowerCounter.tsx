@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useFollowerCount } from "@/hooks/useFollowerCount";
 
 export function FollowerCounter() {
-	const { followerCount, loading, error, refresh } = useFollowerCount();
+	const { followerCount, isLoading, error, refresh } = useFollowerCount();
 
 	const formatNumber = (num: number) => {
 		return num.toLocaleString();
@@ -31,8 +31,8 @@ export function FollowerCounter() {
 					</div>
 				)}
 
-				<Button onClick={refresh} disabled={loading} className="w-full">
-					{loading ? "更新中..." : "フォロワー数を更新"}
+				<Button onClick={refresh} disabled={isLoading} className="w-full">
+					{isLoading ? "更新中..." : "フォロワー数を更新"}
 				</Button>
 			</CardContent>
 		</Card>

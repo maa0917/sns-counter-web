@@ -1,40 +1,41 @@
-import { useState } from "react";
-import { ApiError, getFollowerCount } from "@/api/followerCount";
+import { useQuery } from "@tanstack/react-query";
+import { getFollowerCount, ApiError } from "@/api/followerCount";
 
 interface UseFollowerCountReturn {
 	followerCount: number | null;
-	loading: boolean;
+	isLoading: boolean;
 	error: string | null;
-	refresh: () => Promise<void>;
+	refresh: () => void;
 }
 
 export function useFollowerCount(): UseFollowerCountReturn {
-	const [followerCount, setFollowerCount] = useState<number | null>(null);
-	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState<string | null>(null);
-
-	const refresh = async () => {
-		setLoading(true);
-		setError(null);
-
-		try {
-			const followerCount = await getFollowerCount();
-			setFollowerCount(followerCount);
-		} catch (err) {
-			if (err instanceof ApiError) {
-				setError(err.message);
-			} else {
-				setError("予期しないエラーが発生しました");
+	const {
+		data: followerCount,
+		isLoading,
+		error,
+		refetch,
+	} = useQuery({
+		queryKey: ["follower-count"],
+		queryFn: async () => {
+			try {
+				return await getFollowerCount();
+			} catch (err) {
+				if (err instanceof ApiError) {
+					throw new Error(err.message);
+				}
+				throw new Error("予期しないエラーが発生しました");
 			}
-		} finally {
-			setLoading(false);
-		}
-	};
+		},
+		refetchInterval: 30000, // 30秒ごとに自動更新
+		retry: 3,
+	});
+
+	const errorMessage = error?.message || null;
 
 	return {
-		followerCount,
-		loading,
-		error,
-		refresh,
+		followerCount: followerCount ?? null,
+		isLoading,
+		error: errorMessage,
+		refresh: refetch,
 	};
 }
