@@ -10,15 +10,20 @@ A React TypeScript web application for tracking social media follower counts, de
 - 📊 Number formatting for better readability
 - 🔄 Manual refresh functionality
 - 🎯 Responsive design optimized for various devices
+- 🔄 Data fetching with TanStack Query (React Query)
+- 🧭 Client-side routing with React Router
 
 ## Tech Stack
 
-- **React 19** with TypeScript
-- **Vite 7** for fast development and building
+- **React 19.1.1** with TypeScript
+- **Vite 7.1.7** for fast development and building
 - **Tailwind CSS 3.4** for styling
 - **shadcn/ui** for component library
-- **Biome** for code formatting and linting
-- **pnpm** as package manager
+- **TanStack Query** for data fetching and caching
+- **React Router 7.9.4** for routing
+- **Biome 2.2.6** for code formatting and linting
+- **pnpm 10.6.5** as package manager
+- **babel-plugin-react-compiler** for React compilation optimization
 
 ## Getting Started
 
@@ -65,14 +70,18 @@ pnpm format         # Format only
 
 ```
 src/
-├── components/          # Custom React components
-│   ├── ui/             # shadcn/ui components
-│   └── FollowerCounter.tsx
-├── lib/                # Utility functions
-├── hooks/              # Custom React hooks
-├── types/              # TypeScript type definitions
-├── utils/              # Helper utilities
-└── App.tsx             # Main application component
+├── api/                # API integration
+├── assets/             # Static assets
+├── components/         # Custom React components
+│   ├── ui/            # shadcn/ui components (button, card, label, radio-group, select)
+│   ├── FollowerCounter.tsx
+│   └── UserManagement.tsx
+├── hooks/             # Custom React hooks (useFollowerCount.ts)
+├── lib/               # Utility libraries (utils.ts)
+├── pages/             # Route components (HomePage.tsx, SettingsPage.tsx)
+├── types/             # TypeScript type definitions
+├── utils/             # Utility functions
+└── App.tsx            # Main application component
 ```
 
 ## API Integration
